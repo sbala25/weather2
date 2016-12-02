@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100,400,500,700" rel="stylesheet">
+<style>
+	*,body,html{line-height:normal;margin:0;padding:0;font-family:'Roboto',sans-serif;font-size:14px;color:#fff}html{overflow-y:scroll;font-size:100%;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}a,em,h1,h2,h3,h4,h5,h6,img,li,p,strong,table,tbody,td,tfoot,th,thead,tr,ul{margin:0;padding:0;border:none;font-weight:400;font-style:normal;font-size:100%;font-family:inherit}li,ol,ul{list-style:none}.clearfix:after{content:" ";display:block;clear:both;line-height:0;height:0}html[xmlns] .clearfix{display:block}*html .clearfix{height:1%}.CL{clear:both}a,a.active{text-decoration:none;outline:0}
+
+	.TAC{text-align: center}
+	.LHS{ float: left; }
+	.RHS{ float: right; }
+	.DN{display: none;}
+	.weather{ width: 300px; margin: 0 auto; position: relative; }
+	.weather .looder{ position: absolute; height: 100%; width: 100%; background: rgba(225, 225, 225, 0.7) url("loader.gif") no-repeat center center; z-index: 555;}
+	.weather .hd{ padding: 10px; background: #63c4f9; }
+	.weather .hd:after, .weather .main .up:after, .arndDayW ul:after{ content: ''; display: block; clear: both; }
+	.weather .hd .RHS a{ display: block; height: 20px; width: 20px; background: url(settings.svg) no-repeat center center; }
+	.weather .main{padding: 15px; background: #3791c5; }
+	.weather .main .LHS p{ font-size: 16px; line-height: 0.5em; font-weight: 100; }
+	.weather .main .LHS p span{ font-size: 10px; font-weight: 500; }
+	.weather .main .RHS div{ width: 40px; height: 40px; overflow: hidden; }
+	.weather .main .RHS img{ height: 50px; width:auto; }
+	.dtl{ text-align: center;}
+	.dtl .temp{font-size: 150px; font-weight: 100;}
+	.dtl .wtr, .dtl .hnt{ font-weight: 100; } 
+	.dtl .temp sup{font-size: 20px; margin-bottom: -10px}
+	.arndDayW{ background:rgba(0, 0, 0, 0.2) }
+	.arndDayW li{ width: 25%; float: left;  text-align: center; border-right: 1px solid #fff; box-sizing: border-box; padding-top: 10px; }
+	.arndDayW li:lastchild{ border-right: none; }
+	.arndDayW li.active{ background:rgba(0, 0, 0, 0.5) }
+	.arndDayW li p{ font-size: 12px; line-height: 0.5; }
+	.arndDayW li p sup{ font-size: 9px; }
+	.arndDayW li img{ width: 30px; height: auto; }
+	.sattingPopUp{position: absolute; height: 100%; top:0; left: 0; width: 100%; z-index: 99; background: rgba(0, 0, 0, 0.5)}
+	.sattingPopUp .inr{ position: absolute; top: 50%; left: 50%; margin: -110px 0 0 -100px; background: #fff; height: 220px; width: 200px; padding: 10px; box-sizing: border-box; }
+	.sattingPopUp .inr ul li{padding-bottom: 10px;}
+	.sattingPopUp .inr ul li p,.sattingPopUp .inr ul li option,.sattingPopUp .inr ul li select{color: #000; font-weight: 100; }
+	.sattingPopUp .inr ul li p{padding-bottom: 5px;}
+	.sattingPopUp .inr ul li option{font-size: 12px; }
+	.sattingPopUp .inr ul li select{width: 100%; max-width: 100%; padding: 3px; font-weight: 100; }
+	.sattingPopUp .inr a{ width: 100px; padding: 5px; text-align: center; background: #63c4f9; border-radius: 5px; display: block; margin: 5px auto 0;}
+</style>
+</head>
+<body>
+<div>
+	<br><br>
+	
+</div>
+<div class="weather">
+<div class="looder DN"></div>
+<div class="sattingPopUp">
+	<div class="inr">
+		<ul>
+			<li>
+				<p>Select Country:</p>
+				<select id="countryList" onchange="cityList()">
+					<option value="0" selected>Select Country</option>
+				</select>
+			</li>
+			<li>
+				<p>Select City:</p>
+				<select id="cityList" style="width: 200px" onchange="crnt_weather()"></select>
+			</li>
+			<li>
+				<p>Temprature in:</p>
+				<select>
+					<option value="c" selected>Celsius</option>
+					<option value="f">Fahrenheit</option>
+				</select>
+			</li>
+		</ul>
+		<a href="#">Submit</a>
+	</div>
+</div>
+	<div class="hd">
+		<div class="LHS"> Kolkata, IN</div>
+		<div class="RHS"><a href="#"></a></div>
+	</div>
+	<div class="main">
+		<div class="up">
+		<div class="LHS">
+			<p>04/11/2016 <br> <span>Tuesday</span></p>
+		</div>
+		<div class="RHS">
+			<div><img src="//cdn.apixu.com/weather/64x64/day/122.png"></div>
+		</div>
+	</div>
+	<div class="dtl">
+		<div class="temp">32<sup>&#8451</sup></div>
+		<div class="wtr">Pritty Cloud</div>
+		<div class="hnt">Huminity : 27%</div>
+	</div>
+	</div>
+	<div class="arndDayW">
+	<div class="bg"></div>
+		<ul>
+			<li>
+				<p class="day">Mon</p>
+				<p>32<sup>&#8451</sup></p>
+				<img src="//cdn.apixu.com/weather/64x64/day/122.png">
+			</li>
+			<li>
+				<p class="day">Mon</p>
+				<p>32<sup>&#8451</sup></p>
+				<img src="//cdn.apixu.com/weather/64x64/day/122.png">
+			</li>
+			<li>
+				<p class="day">Mon</p>
+				<p>32<sup>&#8451</sup></p>
+				<img src="//cdn.apixu.com/weather/64x64/day/122.png">
+			</li>
+			<li>
+				<p class="day">Mon</p>
+				<p>32<sup>&#8451</sup></p>
+				<img src="//cdn.apixu.com/weather/64x64/day/122.png">
+			</li>
+		</ul>
+	</div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
